@@ -7,10 +7,48 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    const defaultDemoAppointments = [
+        {
+            id: "APT1001",
+            provider: "Dr. Arun Kumar - General Physician",
+            date: "2026-08-25",
+            time: "10:00 AM",
+            purpose: "General Health Checkup",
+            userEmail: "user@example.com",
+            status: "Confirmed",
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: "APT1002",
+            provider: "Dr. Priya Sharma - Consultant",
+            date: "2026-08-28",
+            time: "02:00 PM",
+            purpose: "Routine Consultation",
+            userEmail: "user@example.com",
+            status: "Confirmed",
+            createdAt: new Date().toISOString()
+        },
+        {
+            id: "APT1003",
+            provider: "Rahul Menon - Career Consultant",
+            date: "2026-08-10",
+            time: "11:00 AM",
+            purpose: "Career Guidance",
+            userEmail: "user@example.com",
+            status: "Completed",
+            createdAt: new Date().toISOString()
+        }
+    ];
+
+    let allAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    if (allAppointments.length === 0) {
+        allAppointments = defaultDemoAppointments;
+        localStorage.setItem("appointments", JSON.stringify(allAppointments));
+    }
+
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    let allAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
     const updatedAppointments = allAppointments.map(appointment =>
         appointment.status === "Confirmed" && new Date(`${appointment.date}T00:00:00`) < today
             ? { ...appointment, status: "Completed" }
@@ -22,8 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
         allAppointments = updatedAppointments;
     }
 
+    const userEmail = (currentUser.email || "").toLowerCase();
     const userAppointments = allAppointments.filter(appointment =>
-        appointment.userEmail === currentUser.email
+        (appointment.userEmail || "").toLowerCase() === userEmail
     );
 
     const upcomingAppointments = userAppointments.filter(appointment =>

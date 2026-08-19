@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Providers | AppointEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -44,96 +47,56 @@
 <script src="js/app.js"></script>
 
 <script>
-
-const providers = [
-    {
-        id: 1,
-        name: "Dr. Arun Kumar",
-        specialty: "General Physician",
-        experience: "8 years",
-        rating: "4.8",
-        icon: "👨‍⚕️"
-    },
-    {
-        id: 2,
-        name: "Dr. Priya Sharma",
-        specialty: "Consultant",
-        experience: "6 years",
-        rating: "4.7",
-        icon: "👩‍⚕️"
-    },
-    {
-        id: 3,
-        name: "Rahul Menon",
-        specialty: "Career Consultant",
-        experience: "10 years",
-        rating: "4.9",
-        icon: "👨‍💼"
-    },
-    {
-        id: 4,
-        name: "Ananya Rao",
-        specialty: "Student Counselor",
-        experience: "5 years",
-        rating: "4.6",
-        icon: "👩‍💼"
-    }
-];
-
 const grid = document.getElementById("providerGrid");
+let systemProviders = getStoredProviders();
 
 function displayProviders(list) {
-
     grid.innerHTML = "";
+    if (list.length === 0) {
+        grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background: white; border-radius: 16px; border: 1px solid var(--border);">
+                <h3>No providers found</h3>
+                <p style="color: var(--muted); margin-top: 8px;">Try searching for a different name or specialty.</p>
+            </div>
+        `;
+        return;
+    }
 
     list.forEach(provider => {
-
         grid.innerHTML += `
             <div class="provider-card">
-
                 <div class="provider-avatar">
-                    ${provider.icon}
+                    ${provider.icon || "👨‍⚕️"}
                 </div>
-
                 <h3>${provider.name}</h3>
-
                 <p class="specialty">
                     ${provider.specialty}
                 </p>
-
                 <div class="provider-info">
                     <span>⭐ ${provider.rating}</span>
                     <span>${provider.experience}</span>
                 </div>
-
                 <a
                     href="book-appointment.html?provider=${provider.id}"
                     class="btn primary full"
                 >
                     Book Appointment
                 </a>
-
             </div>
         `;
     });
 }
 
-displayProviders(providers);
+displayProviders(systemProviders);
 
-document
-    .getElementById("searchProvider")
-    .addEventListener("input", function () {
-
-        const search = this.value.toLowerCase();
-
-        const filtered = providers.filter(provider =>
-            provider.name.toLowerCase().includes(search) ||
-            provider.specialty.toLowerCase().includes(search)
-        );
-
-        displayProviders(filtered);
-    });
-
+document.getElementById("searchProvider").addEventListener("input", function () {
+    const search = this.value.toLowerCase();
+    const filtered = systemProviders.filter(provider =>
+        provider.name.toLowerCase().includes(search) ||
+        provider.specialty.toLowerCase().includes(search)
+    );
+    displayProviders(filtered);
+});
 </script>
 
 </body>

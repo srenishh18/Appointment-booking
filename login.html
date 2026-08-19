@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | AppointEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -51,10 +54,36 @@
             <a href="register.html">Create account</a>
         </p>
 
+        <div style="margin-top: 24px; padding: 18px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; font-size: 14px; color: #166534; text-align: left; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);">
+            <div style="font-weight: 800; font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                <span>🔑 Quick Demo Accounts</span>
+                <span style="font-size: 12px; background: #dcfce7; padding: 2px 8px; border-radius: 10px; font-weight: 700;">Click to Autofill</span>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px;">
+                <button type="button" class="btn secondary" style="padding: 10px 6px; font-size: 13px; font-weight: 700; width: 100%; border-color: #86efac; color: #15803d; background: white;" onclick="fillDemoUser()">
+                    👤 User
+                </button>
+                <button type="button" class="btn secondary" style="padding: 10px 6px; font-size: 13px; font-weight: 700; width: 100%; border-color: #86efac; color: #15803d; background: white;" onclick="fillDemoProvider()">
+                    💼 Provider
+                </button>
+                <button type="button" class="btn secondary" style="padding: 10px 6px; font-size: 13px; font-weight: 700; width: 100%; border-color: #86efac; color: #15803d; background: white;" onclick="fillDemoAdmin()">
+                    🛡️ Admin
+                </button>
+            </div>
+            
+            <div style="margin-top: 12px; font-size: 13px; color: #15803d; line-height: 1.55;">
+                <div><strong>User:</strong> <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">user@example.com</code> / <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">password123</code></div>
+                <div style="margin-top:2px;"><strong>Provider:</strong> <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">arun@provider.com</code> / <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">provider123</code></div>
+                <div style="margin-top:2px;"><strong>Admin:</strong> <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">admin@example.com</code> / <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">adminpassword</code></div>
+            </div>
+        </div>
+
     </div>
 
 </div>
 
+<script src="js/app.js"></script>
 <script src="js/login.js"></script>
 
 </body>

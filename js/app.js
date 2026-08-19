@@ -1,19 +1,86 @@
-// AppointEase - Common JavaScript
+// Shared System Providers Store
+const defaultProvidersList = [
+    { id: 1, name: "Dr. Arun Kumar", specialty: "General Physician", experience: "8 years", rating: "4.8", icon: "👨‍⚕️", email: "arun@provider.com" },
+    { id: 2, name: "Dr. Priya Sharma", specialty: "Consultant", experience: "6 years", rating: "4.7", icon: "👩‍⚕️", email: "priya@provider.com" },
+    { id: 3, name: "Rahul Menon", specialty: "Career Consultant", experience: "10 years", rating: "4.9", icon: "👨‍💼", email: "rahul@provider.com" },
+    { id: 4, name: "Ananya Rao", specialty: "Student Counselor", experience: "5 years", rating: "4.6", icon: "👩‍💼", email: "ananya@provider.com" },
+    { id: 5, name: "Marcus Vance", specialty: "Legal Advisor", experience: "12 years", rating: "4.9", icon: "⚖️", email: "marcus@provider.com" }
+];
+
+function getStoredProviders() {
+    const stored = localStorage.getItem("systemProviders");
+    if (!stored) {
+        localStorage.setItem("systemProviders", JSON.stringify(defaultProvidersList));
+        return defaultProvidersList;
+    }
+    try {
+        const parsed = JSON.parse(stored);
+        return (Array.isArray(parsed) && parsed.length > 0) ? parsed : defaultProvidersList;
+    } catch (e) {
+        return defaultProvidersList;
+    }
+}
+
+function saveStoredProviders(list) {
+    localStorage.setItem("systemProviders", JSON.stringify(list));
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-
     const user = JSON.parse(localStorage.getItem("currentUser"));
+    const navLinks = document.querySelector(".nav-links");
 
-    const loginLink = document.getElementById("loginLink");
+    if (user && navLinks) {
+        const isAdmin = user.role === "admin" || (user.email && user.email.toLowerCase() === "admin@example.com");
+        const isProvider = user.role === "provider" || (user.email && user.email.toLowerCase().includes("@provider.com"));
 
-    if (loginLink) {
-        loginLink.textContent = user ? "Dashboard" : "Login";
-        loginLink.href = user ? "appointments.html" : "login.html";
+        if (isAdmin) {
+            let adminBtn = document.getElementById("adminDashboardNavLink");
+            if (!adminBtn) {
+                adminBtn = document.createElement("a");
+                adminBtn.id = "adminDashboardNavLink";
+                adminBtn.href = "admin.html";
+                adminBtn.innerHTML = "🛡️ Admin Dashboard";
+                adminBtn.style.cssText = "background: #fef3c7; color: #92400e; font-weight: 700; border: 1.5px solid #fde68a; padding: 6px 16px; border-radius: 9999px; transition: all 0.2s ease;";
+                
+                if (window.location.pathname.endsWith("admin.html")) {
+                    adminBtn.style.background = "#0d9488";
+                    adminBtn.style.color = "#ffffff";
+                    adminBtn.style.borderColor = "#0f766e";
+                }
+                navLinks.insertBefore(adminBtn, navLinks.firstChild);
+            }
+        } else if (isProvider) {
+            let providerBtn = document.getElementById("providerDashboardNavLink");
+            if (!providerBtn) {
+                providerBtn = document.createElement("a");
+                providerBtn.id = "providerDashboardNavLink";
+                providerBtn.href = "provider-dashboard.html";
+                providerBtn.innerHTML = "💼 Provider Dashboard";
+                providerBtn.style.cssText = "background: #e0e7ff; color: #3730a3; font-weight: 700; border: 1.5px solid #c7d2fe; padding: 6px 16px; border-radius: 9999px; transition: all 0.2s ease;";
+                
+                if (window.location.pathname.endsWith("provider-dashboard.html")) {
+                    providerBtn.style.background = "#4f46e5";
+                    providerBtn.style.color = "#ffffff";
+                    providerBtn.style.borderColor = "#4338ca";
+                }
+                navLinks.insertBefore(providerBtn, navLinks.firstChild);
+            }
+        }
     }
 
-    // Profile page
-    if (user) {
+    const loginLink = document.getElementById("loginLink");
+    if (loginLink) {
+        if (user) {
+            loginLink.textContent = "Profile";
+            loginLink.href = "profile.html";
+        } else {
+            loginLink.textContent = "Login";
+            loginLink.href = "login.html";
+        }
+    }
 
+    // Profile page pre-fill
+    if (user) {
         const profileName = document.getElementById("profileName");
         const profileEmail = document.getElementById("profileEmail");
         const nameField = document.getElementById("nameField");
@@ -21,17 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (profileName) profileName.textContent = user.name;
         if (profileEmail) profileEmail.textContent = user.email;
-
         if (nameField) nameField.textContent = user.name;
         if (emailField) emailField.textContent = user.email;
     }
-
 });
 
-
 function logout() {
-
     localStorage.removeItem("currentUser");
-
     window.location.href = "index.html";
 }

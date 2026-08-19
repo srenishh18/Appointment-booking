@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dashboard | AppointEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">AppointEase Provider</div>
+
+    <div class="nav-links">
+        <a href="index.html">Website</a>
+        <a href="providers.html">All Providers</a>
+        <a href="provider-dashboard.html" class="active">Provider Dashboard</a>
+    </div>
+</nav>
+
+<main class="page-container">
+
+    <div class="page-header">
+        <div>
+            <span class="badge" id="providerSpecialtyBadge">Service Provider Workspace</span>
+            <h1 id="providerHeaderTitle">Provider Dashboard</h1>
+            <p id="providerHeaderSub">Manage your client schedule, accept bookings, and track time conflicts.</p>
+        </div>
+
+        <button class="btn secondary" onclick="logout()">
+            Logout Account
+        </button>
+    </div>
+
+    <!-- STATS OVERVIEW -->
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <span>📅</span>
+            <div>
+                <small>My Total Bookings</small>
+                <h2 id="providerTotalCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>⏳</span>
+            <div>
+                <small>Upcoming</small>
+                <h2 id="providerUpcomingCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>✓</span>
+            <div>
+                <small>Confirmed</small>
+                <h2 id="providerConfirmedCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card" id="conflictStatCard">
+            <span style="background: #fef3c7; color: #d97706;">⚠️</span>
+            <div>
+                <small>Slot Conflicts</small>
+                <h2 id="providerConflictCount" style="color: #d97706;">0</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PROVIDER APPOINTMENT SCHEDULE TABLE -->
+    <div class="admin-section">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <h2>My Appointment Schedule</h2>
+
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <label style="margin: 0; font-size: 14px; font-weight: 600;">Filter Status:</label>
+                <select id="statusFilterSelect" style="margin: 0; padding: 8px 14px; width: 180px; font-size: 14px;">
+                    <option value="ALL">All Statuses</option>
+                    <option value="Pending">Pending Approval</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Client Email</th>
+                        <th>Date & Time</th>
+                        <th>Purpose</th>
+                        <th>Status</th>
+                        <th>Slot Warning</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="providerScheduleList"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="js/app.js"></script>
+<script src="js/provider.js"></script>
+
+</body>
+</html>

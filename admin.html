@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | AppointEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,8 +16,10 @@
     <div class="logo">AppointEase Admin</div>
 
     <div class="nav-links">
-        <a href="index.html">Website</a>
-        <a href="admin.html" class="active">Dashboard</a>
+        <a href="index.html">Home Website</a>
+        <a href="providers.html">All Service Providers</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="admin.html" class="active">Admin Dashboard</a>
     </div>
 </nav>
 
@@ -22,51 +27,66 @@
 
     <div class="page-header">
         <div>
-            <span class="badge">Administration</span>
-            <h1>Dashboard</h1>
-            <p>Overview of the appointment system.</p>
+            <span class="badge">Administration Control Center</span>
+            <h1>Admin Dashboard</h1>
+            <p>Manage system appointments, inspect each provider's schedule & detect time conflicts.</p>
         </div>
+
+        <a href="index.html" class="btn secondary">
+            ← Return to Website
+        </a>
     </div>
 
+    <!-- STATS OVERVIEW -->
     <div class="stats-grid">
 
         <div class="stat-card">
             <span>👥</span>
             <div>
-                <small>Total Users</small>
+                <small>Total Registered Users</small>
                 <h2 id="userCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>💼</span>
+            <div>
+                <small>Service Providers</small>
+                <h2 id="providerCount">0</h2>
             </div>
         </div>
 
         <div class="stat-card">
             <span>📅</span>
             <div>
-                <small>Appointments</small>
+                <small>Total Appointments</small>
                 <h2 id="appointmentCount">0</h2>
             </div>
         </div>
 
-        <div class="stat-card">
-            <span>✓</span>
+        <div class="stat-card" id="adminConflictStatCard">
+            <span style="background: #fef3c7; color: #d97706;">⚠️</span>
             <div>
-                <small>Confirmed</small>
-                <h2 id="confirmedCount">0</h2>
-            </div>
-        </div>
-
-        <div class="stat-card">
-            <span>❌</span>
-            <div>
-                <small>Cancelled</small>
-                <h2 id="cancelledCount">0</h2>
+                <small>Time Slot Conflicts</small>
+                <h2 id="adminConflictCount" style="color: #d97706;">0</h2>
             </div>
         </div>
 
     </div>
 
-    <div class="admin-section">
+    <!-- APPOINTMENTS MANAGEMENT WITH PROVIDER FILTER & CONFLICT HIGHLIGHT -->
+    <div class="admin-section" style="margin-bottom: 40px;">
 
-        <h2>Recent Appointments</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+            <h2>Appointment Control Center</h2>
+
+            <div style="display: flex; gap: 12px; align-items: center;">
+                <label style="margin: 0; font-size: 14px; font-weight: 700;">Filter by Provider:</label>
+                <select id="adminProviderFilter" style="margin: 0; padding: 10px 14px; width: 260px; font-size: 15px;">
+                    <option value="ALL">All Service Providers</option>
+                </select>
+            </div>
+        </div>
 
         <div class="table-wrapper">
 
@@ -75,10 +95,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Provider</th>
-                        <th>Date</th>
-                        <th>Time</th>
+                        <th>User Email</th>
+                        <th>Service Provider</th>
+                        <th>Date & Time</th>
                         <th>Status</th>
+                        <th>Conflict Warning</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
 
@@ -90,8 +112,85 @@
 
     </div>
 
+    <!-- ADD SERVICE PROVIDER FORM -->
+    <div class="admin-section" style="margin-bottom: 40px;">
+        <h2>➕ Add New Service Provider</h2>
+        <p style="color: var(--muted); margin-bottom: 24px;">Register a new specialist, consultant, advisor, counselor, or doctor into the system roster.</p>
+
+        <form id="addProviderForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+
+            <div>
+                <label>Provider Full Name</label>
+                <input type="text" id="pName" placeholder="e.g. Dr. Sarah Jenkins / Marcus Vance" required>
+            </div>
+
+            <div>
+                <label>Specialty / Profession Role</label>
+                <input type="text" id="pSpecialty" placeholder="e.g. Legal Advisor / Consultant / Cardiologist" required>
+            </div>
+
+            <div>
+                <label>Years of Experience</label>
+                <input type="text" id="pExperience" placeholder="e.g. 8 years" required>
+            </div>
+
+            <div>
+                <label>Rating (1.0 - 5.0)</label>
+                <input type="text" id="pRating" placeholder="e.g. 4.9" value="4.9" required>
+            </div>
+
+            <div style="grid-column: span 2;">
+                <label>Avatar Icon / Category</label>
+                <select id="pIcon" required>
+                    <option value="💼">💼 Business / Career Consultant</option>
+                    <option value="⚖️">⚖️ Legal Advisor</option>
+                    <option value="🎓">🎓 Student / Education Counselor</option>
+                    <option value="💻">💻 Technical Specialist / IT</option>
+                    <option value="💈">💈 Stylist / Grooming Specialist</option>
+                    <option value="🎨">🎨 Creative / Design Advisor</option>
+                    <option value="👨‍⚕️">👨‍⚕️ Male Medical Specialist</option>
+                    <option value="👩‍⚕️">👩‍⚕️ Female Medical Specialist</option>
+                </select>
+            </div>
+
+            <div style="grid-column: span 2;">
+                <button type="submit" class="btn primary">
+                    + Register Service Provider
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- SERVICE PROVIDER ROSTER MANAGEMENT -->
+    <div class="admin-section">
+        <h2>💼 Service Provider Roster</h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Icon</th>
+                        <th>Provider Name</th>
+                        <th>Specialty / Role</th>
+                        <th>Experience</th>
+                        <th>Rating</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="adminProviderList"></tbody>
+
+            </table>
+
+        </div>
+    </div>
+
 </main>
 
+<script src="js/app.js"></script>
 <script src="js/admin.js"></script>
 
 </body>
