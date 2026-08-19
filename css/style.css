@@ -63,7 +63,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 8%;
+    padding: 0 5%;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
 }
@@ -82,7 +82,7 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 32px;
+    gap: 28px;
     align-items: center;
 }
 
@@ -91,7 +91,7 @@ body {
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
-    padding: 8px 14px;
+    padding: 8px 16px;
     border-radius: var(--radius-pill);
     transition: all 0.2s ease;
 }
@@ -190,23 +190,23 @@ body {
 /* HERO */
 
 .hero {
-    min-height: 600px;
+    min-height: 620px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 60px;
-    padding: 90px 8%;
-    background: radial-gradient(circle at 80% 20%, #ccfbf1 0%, rgba(248, 250, 252, 0) 50%),
-                radial-gradient(circle at 10% 80%, #ffedd5 0%, rgba(248, 250, 252, 0) 50%),
+    padding: 80px 5%;
+    background: radial-gradient(circle at 85% 20%, #ccfbf1 0%, rgba(248, 250, 252, 0) 55%),
+                radial-gradient(circle at 10% 80%, #ffedd5 0%, rgba(248, 250, 252, 0) 55%),
                 var(--background);
 }
 
 .hero-content {
-    max-width: 620px;
+    max-width: 680px;
 }
 
 .hero h1 {
-    font-size: clamp(42px, 5.5vw, 64px);
+    font-size: clamp(44px, 5.5vw, 64px);
     line-height: 1.15;
     font-weight: 800;
     letter-spacing: -0.03em;
@@ -216,7 +216,7 @@ body {
 
 .hero p {
     color: var(--muted);
-    font-size: 19px;
+    font-size: 20px;
     line-height: 1.7;
     font-weight: 500;
 }
@@ -229,7 +229,8 @@ body {
 }
 
 .hero-card {
-    width: 380px;
+    width: 400px;
+    max-width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
@@ -285,7 +286,7 @@ body {
 
 .features {
     background: var(--surface);
-    padding: 90px 8%;
+    padding: 90px 5%;
     text-align: center;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -308,15 +309,15 @@ body {
 .feature-grid {
     margin-top: 54px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
 }
 
 .feature-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 32px 28px;
+    padding: 36px 30px;
     text-align: left;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-sm);
@@ -338,7 +339,7 @@ body {
 }
 
 .feature-card h3 {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     margin-bottom: 12px;
     color: var(--text);
@@ -346,16 +347,17 @@ body {
 
 .feature-card p {
     color: var(--muted);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.65;
 }
 
-/* PAGE CONTAINER & HEADERS */
+/* PAGE CONTAINER & HEADERS - FLUID & ADAPTIVE */
 
 .page-container {
-    max-width: 1280px;
-    margin: auto;
-    padding: 56px 6%;
+    max-width: 1480px;
+    width: 92%;
+    margin: 0 auto;
+    padding: 48px 0;
 }
 
 .page-header {
@@ -443,19 +445,19 @@ textarea {
     min-height: 120px;
 }
 
-/* PROVIDERS */
+/* PROVIDERS GRID - ADAPTIVE */
 
 .provider-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
 }
 
 .provider-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 30px 24px;
+    padding: 32px 26px;
     text-align: center;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-sm);
@@ -471,14 +473,14 @@ textarea {
 }
 
 .provider-avatar {
-    width: 90px;
-    height: 90px;
+    width: 96px;
+    height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--primary-light);
     border-radius: 50%;
-    font-size: 44px;
+    font-size: 46px;
     margin: 0 auto 20px;
     box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
 }
@@ -496,7 +498,7 @@ textarea {
     font-weight: 600;
     background: #f0fdf4;
     display: inline-block;
-    padding: 4px 12px;
+    padding: 4px 14px;
     border-radius: var(--radius-pill);
     margin-bottom: 12px;
 }
@@ -513,12 +515,13 @@ textarea {
     color: var(--text-secondary);
 }
 
-/* BOOKING FORM */
+/* BOOKING FORM - FLUID ADAPTIVE */
 
 .form-page {
-    max-width: 760px;
-    margin: 20px auto 60px;
-    padding: 40px 24px;
+    max-width: 1000px;
+    width: 92%;
+    margin: 30px auto 60px;
+    padding: 0;
 }
 
 .form-header {
@@ -542,16 +545,16 @@ textarea {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 44px;
+    padding: 48px;
     box-shadow: var(--shadow-lg);
 }
 
-/* APPOINTMENTS */
+/* APPOINTMENTS & STATS - FLUID ADAPTIVE */
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
     margin-bottom: 36px;
 }
 
@@ -559,7 +562,7 @@ textarea {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 24px 20px;
+    padding: 24px 22px;
     display: flex;
     gap: 18px;
     align-items: center;
@@ -573,9 +576,9 @@ textarea {
 }
 
 .stat-card > span {
-    font-size: 32px;
+    font-size: 34px;
     background: var(--primary-light);
-    padding: 12px;
+    padding: 14px;
     border-radius: var(--radius-md);
     line-height: 1;
 }
@@ -590,7 +593,7 @@ textarea {
 
 .stat-card h2 {
     margin-top: 4px;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 800;
     color: var(--text);
 }
@@ -604,7 +607,7 @@ textarea {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    padding: 28px;
+    padding: 28px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -637,7 +640,7 @@ textarea {
     letter-spacing: 0.06em;
     background: var(--primary-light);
     display: inline-block;
-    padding: 4px 10px;
+    padding: 4px 12px;
     border-radius: var(--radius-pill);
     margin-bottom: 10px !important;
 }
@@ -701,63 +704,69 @@ textarea {
     background: var(--warning-bg);
 }
 
-/* AUTHENTICATION PAGES */
+/* AUTHENTICATION PAGES - COHESIVE MODERN THEME */
 
 .auth-body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    padding: 30px 20px;
+    background: radial-gradient(circle at 15% 15%, #ccfbf1 0%, rgba(248, 250, 252, 0) 55%),
+                radial-gradient(circle at 85% 85%, #ffedd5 0%, rgba(248, 250, 252, 0) 55%),
+                #f8fafc;
+    padding: 40px 20px;
 }
 
 .auth-container {
-    width: 960px;
+    width: 1040px;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: 1fr 1.15fr;
     background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12);
 }
 
 .auth-brand {
-    background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+    background: var(--primary-gradient);
     color: white;
     padding: 64px 48px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: relative;
-    overflow: hidden;
 }
 
 .auth-brand .logo {
     background: none;
     -webkit-text-fill-color: white;
     color: white;
-    font-size: 32px;
+    font-size: 30px;
+    font-weight: 800;
 }
 
 .auth-brand h1 {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 800;
-    margin: 32px 0 16px;
-    line-height: 1.15;
+    margin: 28px 0 16px;
+    line-height: 1.2;
+    color: white;
 }
 
 .auth-brand p {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 18px;
     line-height: 1.65;
 }
 
 .auth-card {
-    padding: 56px 48px;
+    padding: 64px 52px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: white;
 }
 
 .auth-card h2 {
@@ -793,16 +802,17 @@ textarea {
 /* PROFILE PAGE */
 
 .profile-page {
-    max-width: 720px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 1000px;
+    width: 92%;
+    margin: 30px auto 60px;
+    padding: 0;
 }
 
 .profile-card {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 48px;
+    padding: 56px 48px;
     text-align: center;
     box-shadow: var(--shadow-lg);
 }
@@ -821,7 +831,7 @@ textarea {
 }
 
 .profile-card h1 {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 800;
     color: var(--text);
     margin-bottom: 6px;
@@ -829,20 +839,20 @@ textarea {
 
 .profile-card > p {
     color: var(--muted);
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 500;
 }
 
 .profile-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 24px;
     margin: 36px 0;
     text-align: left;
 }
 
 .profile-details div {
-    padding: 22px;
+    padding: 24px;
     background: #f8fafc;
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -870,12 +880,12 @@ textarea {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 32px;
+    padding: 36px 32px;
     box-shadow: var(--shadow-md);
 }
 
 .admin-section h2 {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 800;
     margin-bottom: 24px;
     color: var(--text);
@@ -946,18 +956,18 @@ tr:hover td {
 }
 
 .modal-card {
-    width: 460px;
+    width: 480px;
     max-width: 100%;
     background: var(--surface);
     border-radius: var(--radius-lg);
-    padding: 40px;
+    padding: 44px;
     text-align: center;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .success-icon {
-    width: 76px;
-    height: 76px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto 24px;
     border-radius: 50%;
     background: var(--success-bg);
@@ -965,7 +975,7 @@ tr:hover td {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 800;
 }
 
@@ -1011,19 +1021,12 @@ footer {
     border-top: 1px solid #1e293b;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 1024px) {
-    .feature-grid,
-    .provider-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+/* RESPONSIVE BREAKPOINTS */
 
 @media (max-width: 900px) {
     .hero {
         flex-direction: column;
-        padding: 60px 6%;
+        padding: 60px 5%;
         text-align: center;
     }
 
@@ -1040,13 +1043,9 @@ footer {
         max-width: 480px;
     }
 
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .auth-container {
         width: 100%;
-        max-width: 540px;
+        max-width: 560px;
         grid-template-columns: 1fr;
     }
 
@@ -1071,12 +1070,6 @@ footer {
 
     .hero p {
         font-size: 17px;
-    }
-
-    .feature-grid,
-    .provider-grid,
-    .stats-grid {
-        grid-template-columns: 1fr;
     }
 
     .page-header {
@@ -1108,5 +1101,15 @@ footer {
     .auth-card,
     .profile-card {
         padding: 28px 20px;
+    }
+
+    #bookingForm,
+    #addProviderForm {
+        grid-template-columns: 1fr !important;
+    }
+
+    #bookingForm > div,
+    #addProviderForm > div {
+        grid-column: span 1 !important;
     }
 }

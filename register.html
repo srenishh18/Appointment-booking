@@ -15,52 +15,54 @@
 <div class="auth-container">
 
     <div class="auth-brand">
-        <div class="logo">AppointEase</div>
-        <h1>Create your account</h1>
-        <p>Start managing your appointments today.</p>
+        <a href="index.html" class="logo" style="text-decoration: none; color: white;">
+            ⚡ AppointEase
+        </a>
+        <h1>Create Account</h1>
+        <p>Join AppointEase to easily search service providers, schedule appointments, and coordinate your calendar.</p>
     </div>
 
     <div class="auth-card">
 
-        <h2>Register</h2>
-        <p class="muted">Create a new account</p>
+        <h2>Sign Up for AppointEase</h2>
+        <p class="muted">Fill in your details below to set up your account</p>
 
         <form id="registerForm">
 
-            <label>Full Name</label>
+            <label for="name">Full Name</label>
             <input
                 type="text"
                 id="name"
-                placeholder="Enter your name"
+                placeholder="e.g. Alex Johnson"
                 required
             >
 
-            <label>Email</label>
+            <label for="email">Email Address</label>
             <input
                 type="email"
                 id="email"
-                placeholder="Enter your email"
+                placeholder="e.g. alex@example.com"
                 required
             >
 
-            <label>Password</label>
+            <label for="password">Password</label>
             <input
                 type="password"
                 id="password"
-                placeholder="Create a password"
+                placeholder="Minimum 6 characters"
                 required
             >
 
-            <label>Confirm Password</label>
+            <label for="confirmPassword">Confirm Password</label>
             <input
                 type="password"
                 id="confirmPassword"
-                placeholder="Confirm password"
+                placeholder="Re-enter password"
                 required
             >
 
             <button type="submit" class="btn primary full">
-                Create Account
+                Create Free Account →
             </button>
 
         </form>
@@ -69,6 +71,10 @@
             Already have an account?
             <a href="login.html">Login</a>
         </p>
+
+        <div style="text-align: center; margin-top: 18px;">
+            <a href="index.html" style="color: var(--muted); font-size: 14px; text-decoration: none; font-weight: 500;">← Return to Home Website</a>
+        </div>
 
     </div>
 

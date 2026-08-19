@@ -33,54 +33,56 @@
 
     <div class="booking-card">
 
-        <form id="bookingForm">
+        <form id="bookingForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
 
-            <label>Provider</label>
+            <div>
+                <label>Service Provider</label>
+                <select id="provider" required>
+                    <option value="">Select Service Provider</option>
+                </select>
+            </div>
 
-            <select id="provider" required>
-                <option value="">Select Provider</option>
-                <option value="Dr. Arun Kumar - General Physician">Dr. Arun Kumar - General Physician</option>
-                <option value="Dr. Priya Sharma - Consultant">Dr. Priya Sharma - Consultant</option>
-                <option value="Rahul Menon - Career Consultant">Rahul Menon - Career Consultant</option>
-                <option value="Ananya Rao - Student Counselor">Ananya Rao - Student Counselor</option>
-            </select>
+            <div>
+                <label>Appointment Date</label>
+                <input
+                    type="date"
+                    id="date"
+                    required
+                >
+            </div>
 
-            <label>Appointment Date</label>
+            <div style="grid-column: span 2;">
+                <label>Available Time Slot</label>
+                <select id="time" required>
+                    <option value="">Select Available Time</option>
+                    <option>09:00 AM</option>
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>12:00 PM</option>
+                    <option>02:00 PM</option>
+                    <option>03:00 PM</option>
+                    <option>04:00 PM</option>
+                    <option>05:00 PM</option>
+                </select>
+            </div>
 
-            <input
-                type="date"
-                id="date"
-                required
-            >
+            <div style="grid-column: span 2;">
+                <label>Purpose of Appointment</label>
+                <textarea
+                    id="purpose"
+                    rows="4"
+                    placeholder="Enter the purpose of appointment"
+                    required
+                ></textarea>
+            </div>
 
-            <label>Available Time</label>
+            <div style="grid-column: span 2;">
+                <div id="slotConflictWarning" style="display:none; margin-bottom: 20px; padding: 14px 18px; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 12px; font-size: 14px; color: #b45309; line-height: 1.5;"></div>
 
-            <select id="time" required>
-                <option value="">Select Time</option>
-                <option>09:00 AM</option>
-                <option>10:00 AM</option>
-                <option>11:00 AM</option>
-                <option>12:00 PM</option>
-                <option>02:00 PM</option>
-                <option>03:00 PM</option>
-                <option>04:00 PM</option>
-                <option>05:00 PM</option>
-            </select>
-
-            <label>Purpose</label>
-
-            <textarea
-                id="purpose"
-                rows="4"
-                placeholder="Enter the purpose of appointment"
-                required
-            ></textarea>
-
-            <div id="slotConflictWarning" style="display:none; margin-bottom: 20px; padding: 14px 18px; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 12px; font-size: 14px; color: #b45309; line-height: 1.5;"></div>
-
-            <button class="btn primary full" type="submit">
-                Confirm Appointment
-            </button>
+                <button class="btn primary full" type="submit">
+                    Confirm Appointment →
+                </button>
+            </div>
 
         </form>
 

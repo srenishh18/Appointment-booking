@@ -15,27 +15,29 @@
 <div class="auth-container">
 
     <div class="auth-brand">
-        <div class="logo">AppointEase</div>
-        <h1>Welcome back!</h1>
-        <p>Login to manage your appointments.</p>
+        <a href="index.html" class="logo" style="text-decoration: none; color: white;">
+            ⚡ AppointEase
+        </a>
+        <h1>Welcome Back</h1>
+        <p>Access your personalized dashboard, manage schedules, and coordinate appointments effortlessly.</p>
     </div>
 
     <div class="auth-card">
 
-        <h2>Login</h2>
-        <p class="muted">Enter your account details</p>
+        <h2>Login to Account</h2>
+        <p class="muted">Enter your email and password to access your account</p>
 
         <form id="loginForm">
 
-            <label>Email</label>
+            <label for="email">Email Address</label>
             <input
                 type="email"
                 id="email"
-                placeholder="Enter your email"
+                placeholder="e.g. user@example.com"
                 required
             >
 
-            <label>Password</label>
+            <label for="password">Password</label>
             <input
                 type="password"
                 id="password"
@@ -44,7 +46,7 @@
             >
 
             <button type="submit" class="btn primary full">
-                Login
+                Login to Dashboard →
             </button>
 
         </form>
@@ -54,29 +56,8 @@
             <a href="register.html">Create account</a>
         </p>
 
-        <div style="margin-top: 24px; padding: 18px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; font-size: 14px; color: #166534; text-align: left; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);">
-            <div style="font-weight: 800; font-size: 15px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
-                <span>🔑 Quick Demo Accounts</span>
-                <span style="font-size: 12px; background: #dcfce7; padding: 2px 8px; border-radius: 10px; font-weight: 700;">Click to Autofill</span>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px;">
-                <button type="button" class="btn secondary" style="padding: 10px 6px; font-size: 13px; font-weight: 700; width: 100%; border-color: #86efac; color: #15803d; background: white;" onclick="fillDemoUser()">
-                    👤 User
-                </button>
-                <button type="button" class="btn secondary" style="padding: 10px 6px; font-size: 13px; font-weight: 700; width: 100%; border-color: #86efac; color: #15803d; background: white;" onclick="fillDemoProvider()">
-                    💼 Provider
-                </button>
-                <button type="button" class="btn secondary" style="padding: 10px 6px; font-size: 13px; font-weight: 700; width: 100%; border-color: #86efac; color: #15803d; background: white;" onclick="fillDemoAdmin()">
-                    🛡️ Admin
-                </button>
-            </div>
-            
-            <div style="margin-top: 12px; font-size: 13px; color: #15803d; line-height: 1.55;">
-                <div><strong>User:</strong> <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">user@example.com</code> / <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">password123</code></div>
-                <div style="margin-top:2px;"><strong>Provider:</strong> <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">arun@provider.com</code> / <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">provider123</code></div>
-                <div style="margin-top:2px;"><strong>Admin:</strong> <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">admin@example.com</code> / <code style="background:#dcfce7; padding:1px 5px; border-radius:4px;">adminpassword</code></div>
-            </div>
+        <div style="text-align: center; margin-top: 18px;">
+            <a href="index.html" style="color: var(--muted); font-size: 14px; text-decoration: none; font-weight: 500;">← Return to Home Website</a>
         </div>
 
     </div>
