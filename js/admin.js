@@ -6,13 +6,15 @@ const appointments =
 
 const users =
     JSON.parse(
-        localStorage.getItem("registeredUser")
-    );
+        localStorage.getItem("registeredUsers")
+    ) || [];
+const legacyUser = JSON.parse(localStorage.getItem("registeredUser"));
+const userCount = users.length || (legacyUser ? 1 : 0);
 
 
 document.getElementById(
     "userCount"
-).textContent = users ? 1 : 0;
+).textContent = userCount;
 
 
 document.getElementById(

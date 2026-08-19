@@ -18,6 +18,16 @@ if (registerForm) {
         const confirmPassword =
             document.getElementById("confirmPassword").value;
 
+        if (name.length < 2) {
+            alert("Please enter your full name.");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters.");
+            return;
+        }
+
         if (password !== confirmPassword) {
 
             alert("Passwords do not match.");
@@ -31,10 +41,17 @@ if (registerForm) {
             password: password
         };
 
-        localStorage.setItem(
-            "registeredUser",
-            JSON.stringify(user)
-        );
+        const users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+        const existingUser = users.find(account => account.email === email);
+
+        if (existingUser) {
+            alert("An account with this email already exists.");
+            return;
+        }
+
+        users.push(user);
+        localStorage.setItem("registeredUsers", JSON.stringify(users));
+        localStorage.setItem("registeredUser", JSON.stringify(user));
 
         alert("Registration successful!");
 
@@ -57,8 +74,10 @@ if (loginForm) {
         const password =
             document.getElementById("password").value;
 
-        const registeredUser =
-            JSON.parse(localStorage.getItem("registeredUser"));
+        const registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+        const legacyUser = JSON.parse(localStorage.getItem("registeredUser"));
+        const accounts = registeredUsers.length > 0 ? registeredUsers : (legacyUser ? [legacyUser] : []);
+        const registeredUser = accounts.find(account => account.email === email);
 
         if (!registeredUser) {
 

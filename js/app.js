@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const loginLink = document.getElementById("loginLink");
 
-    if (loginLink && user) {
-        loginLink.textContent = "Dashboard";
-        loginLink.href = "appointments.html";
+    if (loginLink) {
+        loginLink.textContent = user ? "Dashboard" : "Login";
+        loginLink.href = user ? "appointments.html" : "login.html";
     }
 
     // Profile page

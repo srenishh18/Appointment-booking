@@ -2,7 +2,18 @@ const bookingForm = document.getElementById("bookingForm");
 
 if (bookingForm) {
 
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!currentUser) {
+        window.location.href = "login.html";
+    }
+
     const dateInput = document.getElementById("date");
+    const providerId = Number(new URLSearchParams(window.location.search).get("provider"));
+
+    if (providerId > 0 && providerId < document.getElementById("provider").options.length) {
+        document.getElementById("provider").selectedIndex = providerId;
+    }
 
     // Prevent selecting previous dates
     const today = new Date();
@@ -50,6 +61,8 @@ if (bookingForm) {
 
             purpose: purpose,
 
+            userEmail: currentUser.email,
+
             status: "Confirmed",
 
             createdAt:
@@ -73,18 +86,12 @@ if (bookingForm) {
         );
 
 
-        document.getElementById(
-            "appointmentDetails"
-        ).innerHTML = `
-
-            <strong>${provider}</strong><br><br>
-
-            Date: ${date}<br>
-
-            Time: ${time}<br>
-
-            Appointment ID: ${appointment.id}
-
+        document.getElementById("appointmentDetails").innerHTML = `
+            <span class="confirmation-row"><strong>Appointment ID</strong><span>${appointment.id}</span></span>
+            <span class="confirmation-row"><strong>Provider</strong><span>${provider}</span></span>
+            <span class="confirmation-row"><strong>Date</strong><span>${date}</span></span>
+            <span class="confirmation-row"><strong>Time</strong><span>${time}</span></span>
+            <span class="confirmation-row"><strong>Status</strong><span class="status confirmed">Confirmed</span></span>
         `;
 
 
