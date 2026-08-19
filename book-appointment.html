@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | AppointEase</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">AppointEase</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="providers.html">Providers</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="profile.html">Profile</a>
+    </div>
+</nav>
+
+<main class="form-page">
+
+    <div class="form-header">
+        <span class="badge">New Appointment</span>
+        <h1>Book an Appointment</h1>
+        <p>Fill in the details below.</p>
+    </div>
+
+    <div class="booking-card">
+
+        <form id="bookingForm">
+
+            <label>Provider</label>
+
+            <select id="provider" required>
+                <option value="">Select Provider</option>
+                <option>Dr. Arun Kumar - General Physician</option>
+                <option>Dr. Priya Sharma - Consultant</option>
+                <option>Rahul Menon - Career Consultant</option>
+                <option>Ananya Rao - Student Counselor</option>
+            </select>
+
+            <label>Appointment Date</label>
+
+            <input
+                type="date"
+                id="date"
+                required
+            >
+
+            <label>Available Time</label>
+
+            <select id="time" required>
+                <option value="">Select Time</option>
+                <option>09:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>12:00 PM</option>
+                <option>02:00 PM</option>
+                <option>03:00 PM</option>
+                <option>04:00 PM</option>
+                <option>05:00 PM</option>
+            </select>
+
+            <label>Purpose</label>
+
+            <textarea
+                id="purpose"
+                rows="4"
+                placeholder="Enter the purpose of appointment"
+                required
+            ></textarea>
+
+            <button class="btn primary full" type="submit">
+                Confirm Appointment
+            </button>
+
+        </form>
+
+    </div>
+
+</main>
+
+<div class="modal" id="successModal">
+
+    <div class="modal-card">
+
+        <div class="success-icon">✓</div>
+
+        <h2>Appointment Confirmed!</h2>
+
+        <p id="appointmentDetails"></p>
+
+        <a href="appointments.html" class="btn primary full">
+            View Appointments
+        </a>
+
+    </div>
+
+</div>
+
+<script src="js/booking.js"></script>
+
+</body>
+</html>

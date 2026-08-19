@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments | AppointEase</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">AppointEase</div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="providers.html">Providers</a>
+        <a href="appointments.html" class="active">Appointments</a>
+        <a href="profile.html">Profile</a>
+    </div>
+</nav>
+
+<main class="page-container">
+
+    <div class="page-header">
+        <div>
+            <span class="badge">Dashboard</span>
+            <h1>My Appointments</h1>
+            <p>Manage your upcoming and previous appointments.</p>
+        </div>
+
+        <a href="book-appointment.html" class="btn primary">
+            + Book Appointment
+        </a>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <span>📅</span>
+            <div>
+                <small>Total</small>
+                <h2 id="totalAppointments">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>⏳</span>
+            <div>
+                <small>Upcoming</small>
+                <h2 id="upcomingAppointments">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>✓</span>
+            <div>
+                <small>Completed</small>
+                <h2 id="completedAppointments">0</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="appointment-list" id="appointmentList"></div>
+
+</main>
+
+<script src="js/appointments.js"></script>
+
+</body>
+</html>

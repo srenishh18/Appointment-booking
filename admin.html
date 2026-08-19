@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | AppointEase</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">AppointEase Admin</div>
+
+    <div class="nav-links">
+        <a href="index.html">Website</a>
+        <a href="admin.html" class="active">Dashboard</a>
+    </div>
+</nav>
+
+<main class="page-container">
+
+    <div class="page-header">
+        <div>
+            <span class="badge">Administration</span>
+            <h1>Dashboard</h1>
+            <p>Overview of the appointment system.</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <span>👥</span>
+            <div>
+                <small>Total Users</small>
+                <h2 id="userCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>📅</span>
+            <div>
+                <small>Appointments</small>
+                <h2 id="appointmentCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>✓</span>
+            <div>
+                <small>Confirmed</small>
+                <h2 id="confirmedCount">0</h2>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span>❌</span>
+            <div>
+                <small>Cancelled</small>
+                <h2 id="cancelledCount">0</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="admin-section">
+
+        <h2>Recent Appointments</h2>
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Provider</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="adminAppointments"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>
