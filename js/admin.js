@@ -70,8 +70,10 @@ function renderAdminDashboard() {
     document.getElementById("providerCount").textContent = currentProviders.length;
     document.getElementById("appointmentCount").textContent = currentAppointments.length;
 
-    document.getElementById("confirmedCount").textContent =
-        currentAppointments.filter(a => a.status === "Confirmed").length;
+    const confirmedCountEl = document.getElementById("confirmedCount");
+    if (confirmedCountEl) {
+        confirmedCountEl.textContent = currentAppointments.filter(a => a.status === "Confirmed").length;
+    }
 
     // Detect Time Slot Conflicts per Provider
     const providerSlotCounts = {};

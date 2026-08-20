@@ -23,6 +23,12 @@ You can test all system roles using the following pre-configured demo accounts:
 - **Password**: `provider123`
 - **Role**: Service Provider (Dr. Arun Kumar - View provider-specific schedule, accept/complete/cancel bookings, inspect slot conflict alerts)
 
+Additional provider demo accounts use the same password, `provider123`:
+- `priya@provider.com` - Dr. Priya Sharma
+- `rahul@provider.com` - Rahul Menon
+- `ananya@provider.com` - Ananya Rao
+- `marcus@provider.com` - Marcus Vance
+
 ### 🛡️ Admin Account
 - **Email**: `admin@example.com`
 - **Password**: `adminpassword`

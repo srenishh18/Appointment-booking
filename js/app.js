@@ -7,6 +7,33 @@ const defaultProvidersList = [
     { id: 5, name: "Marcus Vance", specialty: "Legal Advisor", experience: "12 years", rating: "4.9", icon: "⚖️", email: "marcus@provider.com" }
 ];
 
+const sharedDemoUsers = [
+    { name: "Alex Johnson", email: "user@example.com", password: "password123", role: "user" },
+    { name: "Maya Patel", email: "maya@example.com", password: "password123", role: "user" },
+    { name: "Admin User", email: "admin@example.com", password: "adminpassword", role: "admin" },
+    { name: "Dr. Arun Kumar", email: "arun@provider.com", password: "provider123", role: "provider", specialty: "General Physician" },
+    { name: "Dr. Priya Sharma", email: "priya@provider.com", password: "provider123", role: "provider", specialty: "Consultant" },
+    { name: "Rahul Menon", email: "rahul@provider.com", password: "provider123", role: "provider", specialty: "Career Consultant" },
+    { name: "Ananya Rao", email: "ananya@provider.com", password: "provider123", role: "provider", specialty: "Student Counselor" },
+    { name: "Marcus Vance", email: "marcus@provider.com", password: "provider123", role: "provider", specialty: "Legal Advisor" }
+];
+
+function seedSharedDemoUsers() {
+    let users = [];
+    try {
+        users = JSON.parse(localStorage.getItem("registeredUsers")) || [];
+    } catch (e) {
+        users = [];
+    }
+
+    sharedDemoUsers.forEach(demo => {
+        if (!users.some(user => user && user.email && user.email.toLowerCase() === demo.email)) {
+            users.push(demo);
+        }
+    });
+    localStorage.setItem("registeredUsers", JSON.stringify(users));
+}
+
 const sharedDemoAppointments = [
     { id: "APT1001", provider: "Dr. Arun Kumar - General Physician", date: "2026-08-25", time: "10:00 AM", purpose: "General Health Checkup", userEmail: "user@example.com", status: "Confirmed" },
     { id: "APT1002", provider: "Dr. Arun Kumar - General Physician", date: "2026-08-25", time: "10:00 AM", purpose: "Urgent Medical Review", userEmail: "guest@example.com", status: "Pending" },
@@ -33,6 +60,7 @@ function seedSharedDemoAppointments() {
     localStorage.setItem("appointments", JSON.stringify(appointments));
 }
 
+seedSharedDemoUsers();
 seedSharedDemoAppointments();
 
 function getStoredProviders() {
