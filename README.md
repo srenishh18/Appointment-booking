@@ -13,6 +13,11 @@ You can test all system roles using the following pre-configured demo accounts:
 - **Password**: `password123`
 - **Role**: Standard User (Book & manage appointments, view profile, real-time conflict warnings)
 
+### 👤 Additional Demo User
+- **Email**: `maya@example.com`
+- **Password**: `password123`
+- **Role**: Standard User (Includes pending and confirmed demo appointments)
+
 ### 💼 Service Provider Account
 - **Email**: `arun@provider.com`
 - **Password**: `provider123`

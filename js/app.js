@@ -7,6 +7,34 @@ const defaultProvidersList = [
     { id: 5, name: "Marcus Vance", specialty: "Legal Advisor", experience: "12 years", rating: "4.9", icon: "⚖️", email: "marcus@provider.com" }
 ];
 
+const sharedDemoAppointments = [
+    { id: "APT1001", provider: "Dr. Arun Kumar - General Physician", date: "2026-08-25", time: "10:00 AM", purpose: "General Health Checkup", userEmail: "user@example.com", status: "Confirmed" },
+    { id: "APT1002", provider: "Dr. Arun Kumar - General Physician", date: "2026-08-25", time: "10:00 AM", purpose: "Urgent Medical Review", userEmail: "guest@example.com", status: "Pending" },
+    { id: "APT1003", provider: "Dr. Priya Sharma - Consultant", date: "2026-08-28", time: "02:00 PM", purpose: "Routine Consultation", userEmail: "user@example.com", status: "Confirmed" },
+    { id: "APT1004", provider: "Rahul Menon - Career Consultant", date: "2026-08-10", time: "11:00 AM", purpose: "Career Guidance", userEmail: "user@example.com", status: "Completed" },
+    { id: "APT1005", provider: "Dr. Priya Sharma - Consultant", date: "2026-09-02", time: "09:30 AM", purpose: "Follow-up Consultation", userEmail: "maya@example.com", status: "Pending" },
+    { id: "APT1006", provider: "Dr. Arun Kumar - General Physician", date: "2026-09-04", time: "03:00 PM", purpose: "Preventive Health Review", userEmail: "maya@example.com", status: "Confirmed" },
+    { id: "APT1007", provider: "Rahul Menon - Career Consultant", date: "2026-08-30", time: "01:00 PM", purpose: "Resume Review", userEmail: "user@example.com", status: "Cancelled" }
+];
+
+function seedSharedDemoAppointments() {
+    let appointments = [];
+    try {
+        appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    } catch (e) {
+        appointments = [];
+    }
+
+    sharedDemoAppointments.forEach(demo => {
+        if (!appointments.some(appointment => appointment && appointment.id === demo.id)) {
+            appointments.push({ ...demo, createdAt: new Date().toISOString() });
+        }
+    });
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+}
+
+seedSharedDemoAppointments();
+
 function getStoredProviders() {
     const stored = localStorage.getItem("systemProviders");
     if (!stored) {

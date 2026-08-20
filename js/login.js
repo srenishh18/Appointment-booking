@@ -32,6 +32,12 @@ const defaultDemoUsers = [
         password: "provider123",
         role: "provider",
         specialty: "Career Consultant"
+    },
+    {
+        name: "Maya Patel",
+        email: "maya@example.com",
+        password: "password123",
+        role: "user"
     }
 ];
 
@@ -75,6 +81,36 @@ const defaultDemoAppointments = [
         userEmail: "user@example.com",
         status: "Completed",
         createdAt: new Date().toISOString()
+    },
+    {
+        id: "APT1005",
+        provider: "Dr. Priya Sharma - Consultant",
+        date: "2026-09-02",
+        time: "09:30 AM",
+        purpose: "Follow-up Consultation",
+        userEmail: "maya@example.com",
+        status: "Pending",
+        createdAt: new Date().toISOString()
+    },
+    {
+        id: "APT1006",
+        provider: "Dr. Arun Kumar - General Physician",
+        date: "2026-09-04",
+        time: "03:00 PM",
+        purpose: "Preventive Health Review",
+        userEmail: "maya@example.com",
+        status: "Confirmed",
+        createdAt: new Date().toISOString()
+    },
+    {
+        id: "APT1007",
+        provider: "Rahul Menon - Career Consultant",
+        date: "2026-08-30",
+        time: "01:00 PM",
+        purpose: "Resume Review",
+        userEmail: "user@example.com",
+        status: "Cancelled",
+        createdAt: new Date().toISOString()
     }
 ];
 
@@ -100,9 +136,12 @@ function seedDemoData() {
         appointments = [];
     }
 
-    if (appointments.length === 0) {
-        localStorage.setItem("appointments", JSON.stringify(defaultDemoAppointments));
-    }
+    defaultDemoAppointments.forEach(demo => {
+        if (!appointments.some(appointment => appointment && appointment.id === demo.id)) {
+            appointments.push(demo);
+        }
+    });
+    localStorage.setItem("appointments", JSON.stringify(appointments));
 }
 
 // Seed on script load
